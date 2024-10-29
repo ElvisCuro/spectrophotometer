@@ -85,14 +85,16 @@ WSGI_APPLICATION = 'eva1.wsgi.application'
 #     }
 # }
 
+# mysql://root:eoAyMxFrtgLwxkyanqYPNJuwpVDISamS@autorack.proxy.rlwy.net:11502/railway
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': 'v39LWQi2BKxQ9uXw0GDs',
-        'HOST': 'containers-us-west-138.railway.app',
-        'PORT': '5518',
+        'PASSWORD': 'eoAyMxFrtgLwxkyanqYPNJuwpVDISamS',
+        'HOST': 'autorack.proxy.rlwy.net',
+        'PORT': '11502',
     }
 }
 
