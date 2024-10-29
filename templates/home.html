@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lectura de Sensor</title>
+    <script>
+        function actualizarDatos() {
+            // Realiza una solicitud GET a la nueva URL para obtener los valores actualizados
+            fetch('/obtener-datos/')
+                .then(response => response.json())
+                .then(data => {
+                    // Actualiza los valores en el HTML
+                    document.getElementById('valor-sensor').innerText = data.valor;
+                    document.getElementById('voltaje').innerText = data.voltaje;
+                    document.getElementById('voltaje-corregido').innerText = data.voltaje_corregido;
+                    document.getElementById('absorbancia').innerText = data.absorbancia;  // Actualiza la absorbancia
+                })
+                .catch(error => console.error('Error al recibir los datos:', error));
+        }
+
+        // Llama a la función para actualizar los datos cada 2 segundos
+        setInterval(actualizarDatos, 2000);
+    </script>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <h1>Datos del Sensor</h1>
+        <p>Valor del sensor: <span id="valor-sensor">{{ valor }}</span></p>
+        <p>Voltaje: <span id="voltaje">{{ voltaje }}</span></p>
+        <p>Voltaje corregido: <span id="voltaje-corregido">{{ voltaje_corregido }}</span></p>
+        <p>Absorbancia: <span id="absorbancia">{{ absorbancia }}</span></p> <!-- Añadir absorbancia -->
+
+    </main>
+    <footer>
+        <h3>Contacto</h3>
+        <ul>
+            <li>Teléfono: 926577705</li>
+            <li>Email: ecuror@unsa.edu.pe</li>
+            <li>Dirección: Arequipa/Arequipa/Perú</li>
+        </ul>
+    </footer>
+</body>
+
+</html>
