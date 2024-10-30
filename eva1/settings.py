@@ -93,7 +93,8 @@ WSGI_APPLICATION = 'eva1.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:zItFJotjGpTxvxYDsuXkXnBSfzVfQsAs@autorack.proxy.rlwy.net:28419/railway'
+        default='postgresql://postgres:zItFJotjGpTxvxYDsuXkXnBSfzVfQsAs@postgres.railway.internal:5432/railway'
+        
     )
 }
 
