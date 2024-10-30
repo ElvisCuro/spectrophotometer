@@ -1,1 +1,1 @@
-web: gunicorn eva1.wsgi
+web: gunicorn eva1.wsgi.application
