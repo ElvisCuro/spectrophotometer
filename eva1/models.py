@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 
 class SensorData(models.Model):
-    id = models.IntegerField(primary_key=True)
     valor = models.FloatField()
     voltaje = models.FloatField()
     voltaje_corregido = models.FloatField()
