@@ -1,1 +1,1 @@
-web: gunicorn eva1.wsgi
+web: python manage.py collectstatic && gunicorn eva1.wsgi
