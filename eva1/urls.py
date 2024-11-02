@@ -1,10 +1,10 @@
 from django.urls import path
 from . import views
 from django.contrib import admin
-from .models import SensorData
+from .models import Mediciones
 
 # Registrar el modelo en el administrador
-admin.site.register(SensorData)
+admin.site.register(Mediciones)
 
 urlpatterns = [
     path('', views.home_view, name='index'),  # Ruta que muestra el template con los valores

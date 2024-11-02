@@ -17,6 +17,7 @@
                     document.getElementById('voltaje').innerText = data.voltaje;
                     document.getElementById('voltaje-corregido').innerText = data.voltaje_corregido;
                     document.getElementById('absorbancia').innerText = data.absorbancia;  // Actualiza la absorbancia
+                    document.getElementById('id-experimento').innerText = data.id_experimento;
                 })
                 .catch(error => console.error('Error al recibir los datos:', error));
         }
@@ -36,6 +37,7 @@
         <p>Voltaje: <span id="voltaje">{{ voltaje }}</span></p>
         <p>Voltaje corregido: <span id="voltaje-corregido">{{ voltaje_corregido }}</span></p>
         <p>Absorbancia: <span id="absorbancia">{{ absorbancia }}</span></p> <!-- Añadir absorbancia -->
+        <p>Absorbancia: <span id="id-experimento">{{ id_experimento }}</span></p> <!-- Añadir absorbancia -->
         <div>
             <img src="{% static '../static/images/gorro.png' %}" alt="gorro" style="width: 200px;">
         </div>
