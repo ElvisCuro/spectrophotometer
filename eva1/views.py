@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Mediciones
+import json
 
 # Variables globales para almacenar los datos del ESP32
 mediciones = {
@@ -40,3 +41,21 @@ def home_view(request):
 def obtener_datos(request):
     # Devuelve los datos en formato JSON para que el frontend los actualice
     return JsonResponse(mediciones)
+
+@csrf_exempt
+def crear_experimento(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        nombre_experimento = data.get('nombre_experimento', '').strip()
+        descripcion = data.get('descripcion', '').strip()
+        
+        # Crear el nuevo experimento
+        nuevo_experimento = Experimento.objects.create(
+            nombre_experimento=nombre_experimento,
+            descripcion=descripcion,
+            fecha_inicio=timezone.now()
+        )
+        
+        return JsonResponse({'status': 'Experimento creado correctamente', 'id_experimento': nuevo_experimento.id_experimento})
+
+    return JsonResponse({'status': 'Error: Método no permitido'}, status=405)

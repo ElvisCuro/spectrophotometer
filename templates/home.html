@@ -1,56 +1,69 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lectura de Sensor</title>
     <script>
         function actualizarDatos() {
-            // Realiza una solicitud GET a la nueva URL para obtener los valores actualizados
             fetch('/obtener-datos/')
                 .then(response => response.json())
                 .then(data => {
-                    // Actualiza los valores en el HTML
                     document.getElementById('valor-sensor').innerText = data.valor;
                     document.getElementById('voltaje').innerText = data.voltaje;
                     document.getElementById('voltaje-corregido').innerText = data.voltaje_corregido;
-                    document.getElementById('absorbancia').innerText = data.absorbancia;  // Actualiza la absorbancia
+                    document.getElementById('absorbancia').innerText = data.absorbancia;
                     document.getElementById('id-experimento').innerText = data.id_experimento;
                 })
                 .catch(error => console.error('Error al recibir los datos:', error));
         }
 
-        // Llama a la función para actualizar los datos cada 2 segundos
         setInterval(actualizarDatos, 2000);
+
+        function crearExperimento() {
+            const descripcion = document.getElementById('descripcion-experimento').value;
+            const nombreExperimento = document.getElementById('nombre-experimento').value;
+
+            fetch('/crear-experimento/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ nombre: nombreExperimento, descripcion: descripcion })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'Experimento creado') {
+                    alert('Nuevo experimento creado con éxito');
+                    actualizarDatos(); // Para actualizar la interfaz si es necesario
+                } else {
+                    alert('Error al crear el experimento');
+                }
+            })
+            .catch(error => console.error('Error al enviar los datos:', error));
+        }
     </script>
 </head>
 
 <body>
-    <header>
-
-    </header>
     <main>
         <h1>Datos del Sensor</h1>
         <p>Valor del sensor: <span id="valor-sensor">{{ valor }}</span></p>
         <p>Voltaje: <span id="voltaje">{{ voltaje }}</span></p>
         <p>Voltaje corregido: <span id="voltaje-corregido">{{ voltaje_corregido }}</span></p>
-        <p>Absorbancia: <span id="absorbancia">{{ absorbancia }}</span></p> <!-- Añadir absorbancia -->
-        <p>Absorbancia: <span id="id-experimento">{{ id_experimento }}</span></p> <!-- Añadir absorbancia -->
-        <div>
-            <img src="{% static '../static/images/gorro.png' %}" alt="gorro" style="width: 200px;">
-        </div>
+        <p>Absorbancia: <span id="absorbancia">{{ absorbancia }}</span></p>
+        <p>Experimento: <span id="id-experimento">{{ id_experimento }}</span></p>
 
+        <h2>Crear nuevo experimento</h2>
+        <label for="nombre-experimento">Nombre del experimento:</label>
+        <input type="text" id="nombre-experimento" required>
+        
+        <label for="descripcion-experimento">Descripción:</label>
+        <textarea id="descripcion-experimento" rows="4" cols="50" required></textarea>
+        
+        <button onclick="crearExperimento()">Crear Experimento</button>
     </main>
-    <footer>
-        <h3>Contacto</h3>
-        <ul>
-            <li>Teléfono: 926577705</li>
-            <li>Email: ecuror@unsa.edu.pe</li>
-            <li>Dirección: Arequipa/Arequipa/Perú</li>
-        </ul>
-    </footer>
 </body>
-
 </html>
