@@ -91,25 +91,25 @@ WSGI_APPLICATION = 'eva1.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres:zItFJotjGpTxvxYDsuXkXnBSfzVfQsAs@autorack.proxy.rlwy.net:28419/railway'
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='postgresql://postgres:zItFJotjGpTxvxYDsuXkXnBSfzVfQsAs@autorack.proxy.rlwy.net:28419/railway'
         
-    )
-}
+#     )
+# }
 
 # mysql://root:eoAyMxFrtgLwxkyanqYPNJuwpVDISamS@autorack.proxy.rlwy.net:11502/railway
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'railway',
-#         'USER': 'root',
-#         'PASSWORD': 'eoAyMxFrtgLwxkyanqYPNJuwpVDISamS',
-#         'HOST': 'autorack.proxy.rlwy.net',
-#         'PORT': '11502',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'nHQtToKVpomOhToHihSkWqZquEEZKMPH',
+        'HOST': 'postgres.railway.internal',
+        'PORT': '5432',
+    }
+}
 
 
 
