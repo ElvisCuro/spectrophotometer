@@ -103,27 +103,27 @@ WSGI_APPLICATION = 'eva1.wsgi.application'
 
 # postgresql://postgres:nHQtToKVpomOhToHihSkWqZquEEZKMPH@postgres.railway.internal:5432/railway
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'railway',
-#         'USER': 'postgres',
-#         'PASSWORD': 'nHQtToKVpomOhToHihSkWqZquEEZKMPH',
-#         'HOST': 'junction.proxy.rlwy.net',
-#         'PORT': '53334',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': 'nHQtToKVpomOhToHihSkWqZquEEZKMPH',
-        'HOST': 'postgres.railway.internal',
-        'PORT': '5432',
+        'HOST': 'junction.proxy.rlwy.net',
+        'PORT': '53334',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'nHQtToKVpomOhToHihSkWqZquEEZKMPH',
+#         'HOST': 'postgres.railway.internal',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation

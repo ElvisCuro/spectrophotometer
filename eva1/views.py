@@ -11,30 +11,48 @@ mediciones = {
     'valor': 0,
     'voltaje': 0.0,
     'voltaje_corregido': 0.0,
-    'id_experimento':0.0,
+    'id_experimento':0,
     'absorbancia': 0.0  # Añadimos el valor de absorbancia
 }
 
 @csrf_exempt
 def home_view(request):
     if request.method == 'POST':
-        # Asegúrate de obtener y convertir los datos correctamente
-        mediciones['valor'] = float(request.POST.get('valor', 0))  # Convertir a float
-        mediciones['voltaje'] = float(request.POST.get('voltaje', 0.0))  # Convertir a float
-        mediciones['voltaje_corregido'] = float(request.POST.get('voltaje_corregido', 0.0))  # Convertir a float
-        mediciones['absorbancia'] = float(request.POST.get('absorbancia', 0.0))  # Convertir a float
-        mediciones['id_experimento']= float(request.POST.get('id_experimento',0.0))
+        try:
+            mediciones['valor'] = float(request.POST.get('valor', 0))
+            mediciones['voltaje'] = float(request.POST.get('voltaje', 0.0))
+            mediciones['voltaje_corregido'] = float(request.POST.get('voltaje_corregido', 0.0))
+            mediciones['absorbancia'] = float(request.POST.get('absorbancia', 0.0))
+            mediciones['id_experimento'] = int(request.POST.get('id_experimento'))
 
-        # Guardar los datos en la base de datos
+            # Obtener la concentración y utilizar la última guardada si no se proporciona una nueva
+            nueva_concentracion = request.POST.get('concentracion')
+            if nueva_concentracion:
+                mediciones['concentracion'] = float(nueva_concentracion)
+            else:
+                ultima_medicion = Mediciones.objects.filter(id_experimento=mediciones['id_experimento']).order_by('-fecha').first()
+                if ultima_medicion:
+                    mediciones['concentracion'] = ultima_medicion.concentracion
+        except ValueError:
+            return JsonResponse({'status': 'Error: Datos no válidos'}, status=400)
+
+        # Obtener la instancia del experimento sin cambiar el ID seleccionado
+        try:
+            experimento_instance = Experimento.objects.get(id_experimento=mediciones['id_experimento'])
+        except Experimento.DoesNotExist:
+            return JsonResponse({'status': 'Error: El experimento no existe'}, status=400)
+
+        # Guardar la medición con el ID del experimento actual y la concentración
         Mediciones.objects.create(
-            id_experimento=mediciones['id_experimento_id'],
+            id_experimento=experimento_instance,
             valor=mediciones['valor'],
             voltaje=mediciones['voltaje'],
             voltaje_corregido=mediciones['voltaje_corregido'],
-            absorbancia=mediciones['absorbancia']  # Guardar absorbancia
+            concentracion=mediciones['concentracion'],
+            absorbancia=mediciones['absorbancia']
         )
 
-        return JsonResponse({'status': 'Datos recibidos correctamente'})  # Responder con un JSON al ESP32
+        return JsonResponse({'status': 'Datos recibidos correctamente'})
 
     # Si es un GET, renderiza el template con los valores actuales
     return render(request, 'home.html', mediciones)
