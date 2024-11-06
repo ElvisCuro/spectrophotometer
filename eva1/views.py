@@ -84,7 +84,7 @@ def home_view(request):
         'experimento_seleccionado': experimento_seleccionado,
         'mediciones': mediciones_experimento,
         'page_obj': page_obj,
-        'concentracion': mediciones['concentracion'],
+        'concentracion':mediciones['concentracion'],
     }
     
     return render(request, 'home.html', context)
