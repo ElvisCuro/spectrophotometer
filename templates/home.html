@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lectura de Sensor</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <script>
         function actualizarDatos() {
             fetch('/obtener-datos/')
@@ -52,7 +55,6 @@
         <h1>Datos del Sensor</h1>
         <p>Valor del sensor: <span id="valor-sensor">{{ valor }}</span></p>
         <p>Voltaje: <span id="voltaje">{{ voltaje }}</span></p>
-        <p>Voltaje corregido: <span id="voltaje-corregido">{{ voltaje_corregido }}</span></p>
         <p>Absorbancia: <span id="absorbancia">{{ absorbancia }}</span></p>
         <p>Experimento: <span id="id-experimento">{{ id_experimento }}</span></p>
 
