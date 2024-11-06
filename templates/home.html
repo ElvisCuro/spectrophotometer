@@ -35,7 +35,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                if (data.status === 'Experimento creado') {
+                if (data.status === 'Nuevo experimento creado con éxito') {
                     alert('Nuevo experimento creado con éxito');
                     actualizarDatos(); // Para actualizar la interfaz si es necesario
                 } else {

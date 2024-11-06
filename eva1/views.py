@@ -1,4 +1,4 @@
-from datetime import timezone
+from django.utils import timezone
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -66,16 +66,16 @@ def obtener_datos(request):
 def crear_experimento(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        nombre_experimento = data.get('nombre_experimento', '').strip()
+        nombre_experimento = data.get('nombre', '').strip()
         descripcion = data.get('descripcion', '').strip()
         
         # Crear el nuevo experimento
         nuevo_experimento = Experimento.objects.create(
             nombre_experimento=nombre_experimento,
             descripcion=descripcion,
-            fecha_inicio=timezone.now()
+            fecha_inicio=timezone.now(),
         )
         
-        return JsonResponse({'status': 'Experimento creado correctamente', 'id_experimento': nuevo_experimento.id_experimento})
+        return JsonResponse({'status': "Nuevo experimento creado con éxito", 'id_experimento': nuevo_experimento.id_experimento})
 
     return JsonResponse({'status': 'Error: Método no permitido'}, status=405)
