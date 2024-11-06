@@ -18,6 +18,7 @@
                     document.getElementById('voltaje-corregido').innerText = data.voltaje_corregido;
                     document.getElementById('absorbancia').innerText = data.absorbancia;
                     document.getElementById('id-experimento').innerText = data.id_experimento;
+                    document.getElementById('concentracion').innerText=data.concentracion;
                 })
                 .catch(error => console.error('Error al recibir los datos:', error));
         }
