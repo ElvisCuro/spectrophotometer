@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'eva1.wsgi.application'
 
 # postgresql://postgres:nHQtToKVpomOhToHihSkWqZquEEZKMPH@postgres.railway.internal:5432/railway
 
-postgresql://postgres:TYYqWlhWCDjsgQxtXOLUHsFcKTOwDUVz@junction.proxy.rlwy.net:39780/railway
+# postgresql://postgres:TYYqWlhWCDjsgQxtXOLUHsFcKTOwDUVz@junction.proxy.rlwy.net:39780/railway
 
 DATABASES = {
     'default': {
