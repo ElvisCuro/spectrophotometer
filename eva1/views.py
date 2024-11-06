@@ -12,7 +12,8 @@ mediciones = {
     'voltaje': 0.0,
     'voltaje_corregido': 0.0,
     'id_experimento': 0,
-    'absorbancia': 0.0
+    'absorbancia': 0.0,
+    'concentracion':0,
 }
 
 @csrf_exempt
@@ -52,16 +53,7 @@ def home_view(request):
             mediciones['voltaje_corregido'] = float(request.POST.get('voltaje_corregido', 0.0))
             mediciones['absorbancia'] = float(request.POST.get('absorbancia', 0.0))
             mediciones['id_experimento'] = int(request.POST.get('id_experimento'))
-
-            nueva_concentracion = request.POST.get('concentracion')
-            if nueva_concentracion:
-                mediciones['concentracion'] = float(nueva_concentracion)
-            else:
-                ultima_medicion = Mediciones.objects.filter(
-                    id_experimento=mediciones['id_experimento']
-                ).order_by('-fecha').first()
-                if ultima_medicion:
-                    mediciones['concentracion'] = ultima_medicion.concentracion
+            mediciones['concentracion']=int(request.POST.get('concentracion'))
 
             experimento_instance = get_object_or_404(
                 Experimento, 
@@ -74,7 +66,7 @@ def home_view(request):
                 voltaje=mediciones['voltaje'],
                 voltaje_corregido=mediciones['voltaje_corregido'],
                 concentracion=mediciones['concentracion'],
-                absorbancia=mediciones['absorbancia']
+                absorbancia=mediciones['absorbancia'],
             )
             return JsonResponse({'status': 'Datos recibidos correctamente'})
             
@@ -92,6 +84,7 @@ def home_view(request):
         'experimento_seleccionado': experimento_seleccionado,
         'mediciones': mediciones_experimento,
         'page_obj': page_obj,
+        'concentracion':mediciones['concentracion'],
     }
     
     return render(request, 'home.html', context)
