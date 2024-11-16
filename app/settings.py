@@ -92,12 +92,12 @@ WSGI_APPLICATION = 'app.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default='postgresql://postgres:zItFJotjGpTxvxYDsuXkXnBSfzVfQsAs@autorack.proxy.rlwy.net:28419/railway'
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgresql://laboratorio_ubww_user:LOVI3aCJlaqylRgYWnoeGzlrwzTln867@dpg-css1hqt2ng1s73aep4vg-a/laboratorio_ubww'
         
-#     )
-# }
+    )
+}
 
 # mysql://root:eoAyMxFrtgLwxkyanqYPNJuwpVDISamS@autorack.proxy.rlwy.net:11502/railway
 # postgresql://postgres:nHQtToKVpomOhToHihSkWqZquEEZKMPH@junction.proxy.rlwy.net:53334/railway
@@ -106,30 +106,18 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 # postgresql://postgres:TYYqWlhWCDjsgQxtXOLUHsFcKTOwDUVz@junction.proxy.rlwy.net:39780/railway
 
-# postgresql://laboratorio_ubww_user:LOVI3aCJlaqylRgYWnoeGzlrwzTln867@dpg-css1hqt2ng1s73aep4vg-a.oregon-postgres.render.com/laboratorio_ubww
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Laboratorio',
-        'USER': 'laboratorio_ubww_user',
-        'PASSWORD': 'LOVI3aCJlaqylRgYWnoeGzlrwzTln867',
-        'HOST': 'dpg-css1hqt2ng1s73aep4vg-a.oregon-postgres.render.com',
-        'PORT': '5432',
-    }
-}
 
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'railway',
 #         'USER': 'postgres',
-#         'PASSWORD': 'nHQtToKVpomOhToHihSkWqZquEEZKMPH',
-#         'HOST': 'postgres.railway.internal',
-#         'PORT': '5432',
+#         'PASSWORD': 'TYYqWlhWCDjsgQxtXOLUHsFcKTOwDUVz',
+#         'HOST': 'junction.proxy.rlwy.net',
+#         'PORT': '39780',
 #     }
 # }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
