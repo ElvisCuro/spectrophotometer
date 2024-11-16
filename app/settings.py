@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://spectrophotometer.onrender.com/','*']
+CSRF_TRUSTED_ORIGINS = ['https://spectrophotometer.onrender.com/']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -93,16 +93,19 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://laboratorio_ubww_user:LOVI3aCJlaqylRgYWnoeGzlrwzTln867@dpg-css1hqt2ng1s73aep4vg-a/laboratorio_ubww'
-        
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'laboratorio_ubww',
+        'USER': 'laboratorio_ubww_user',
+        'PASSWORD': 'LOVI3aCJlaqylRgYWnoeGzlrwzTln867',
+        'HOST': 'dpg-css1hqt2ng1s73aep4vg-a.oregon-postgres.render.com',
+        'PORT': '5432',  # El puerto por defecto para PostgreSQL es 5432
+    }
 }
+
 
 # mysql://root:eoAyMxFrtgLwxkyanqYPNJuwpVDISamS@autorack.proxy.rlwy.net:11502/railway
 # postgresql://postgres:nHQtToKVpomOhToHihSkWqZquEEZKMPH@junction.proxy.rlwy.net:53334/railway
-
-# postgresql://postgres:nHQtToKVpomOhToHihSkWqZquEEZKMPH@postgres.railway.internal:5432/railway
 
 # postgresql://postgres:TYYqWlhWCDjsgQxtXOLUHsFcKTOwDUVz@junction.proxy.rlwy.net:39780/railway
 
