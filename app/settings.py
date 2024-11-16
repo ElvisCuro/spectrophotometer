@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://spectrophotometer-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://spectrophotometer.onrender.com/','*']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
