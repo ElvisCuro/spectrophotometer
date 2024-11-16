@@ -106,14 +106,16 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 # postgresql://postgres:TYYqWlhWCDjsgQxtXOLUHsFcKTOwDUVz@junction.proxy.rlwy.net:39780/railway
 
+postgresql://laboratorio_ubww_user:LOVI3aCJlaqylRgYWnoeGzlrwzTln867@dpg-css1hqt2ng1s73aep4vg-a.oregon-postgres.render.com/laboratorio_ubww
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'TYYqWlhWCDjsgQxtXOLUHsFcKTOwDUVz',
-        'HOST': 'junction.proxy.rlwy.net',
-        'PORT': '39780',
+        'NAME': 'Laboratorio',
+        'USER': 'laboratorio_ubww_user',
+        'PASSWORD': 'LOVI3aCJlaqylRgYWnoeGzlrwzTln867',
+        'HOST': 'dpg-css1hqt2ng1s73aep4vg-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
 
