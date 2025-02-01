@@ -92,14 +92,15 @@ WSGI_APPLICATION = 'app.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
+# postgresql://database_cwg0_user:8IQUnbvj7GFZpb9Yeh4GD3ajQ79H6Dse@dpg-cuf6p5dds78s73fiefp0-a/database_cwg0
+# postgresql://database_cwg0_user:8IQUnbvj7GFZpb9Yeh4GD3ajQ79H6Dse@dpg-cuf6p5dds78s73fiefp0-a.oregon-postgres.render.com/database_cwg0
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'laboratorio_ubww',
-        'USER': 'laboratorio_ubww_user',
-        'PASSWORD': 'LOVI3aCJlaqylRgYWnoeGzlrwzTln867',
-        'HOST': 'dpg-css1hqt2ng1s73aep4vg-a.oregon-postgres.render.com',
+        'NAME': 'database_cwg0',
+        'USER': 'database_cwg0_user',
+        'PASSWORD': '8IQUnbvj7GFZpb9Yeh4GD3ajQ79H6Dse',
+        'HOST': 'dpg-cuf6p5dds78s73fiefp0-a.oregon-postgres.render.com',
         'PORT': '5432',  # El puerto por defecto para PostgreSQL es 5432
     }
 }
